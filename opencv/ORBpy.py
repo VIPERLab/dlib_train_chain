@@ -5,7 +5,8 @@ import sys
 
 cap = cv2.VideoCapture(0)
 
-sample = cv2.imread('/tmp/card1/card1/positive/card10.png',0)
+#sample = cv2.imread('/tmp/card1/card1/positive/card10.png',0)
+sample = cv2.imread('/tmp/crop.png',0)
 orb_sample = cv2.ORB()
 kp_sample, des_sample = orb_sample.detectAndCompute(sample, None)
 
@@ -28,6 +29,9 @@ def drawMatches(img1, kp1, img2, kp2, matches):
 
     # For each pair of points we have between both images
     # draw circles, then connect a line between them
+    x = 0
+    y = 0
+
     for mat in matches:
 
         # Get the matching keypoints for each of the images
@@ -38,6 +42,9 @@ def drawMatches(img1, kp1, img2, kp2, matches):
         # y - rows
         (x1,y1) = kp1[img1_idx].pt
         (x2,y2) = kp2[img2_idx].pt
+
+	x += kp1[img1_idx].pt[0]
+        y += kp1[img1_idx].pt[1]
 
         # Draw a small circle at both co-ordinates
         # radius 4
@@ -51,8 +58,7 @@ def drawMatches(img1, kp1, img2, kp2, matches):
         # colour blue
         cv2.line(out, (int(x1),int(y1)), (int(x2)+cols1,int(y2)), (255, 0, 0), 1)
 
-
-    # Also return the image if you'd like a copy
+    cv2.circle(out, (int(x/10),int(y/10)), 4, (255, 255, 0), 1)
     return out
 
 while True:
