@@ -25,7 +25,8 @@ SET(CMAKE_BUILD_TYPE Release)
 
 include_directories(${dlib_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS})
 
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11 -march=core-avx-i -O2 -pipe")
+# SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11 -march=core-avx2 -O2")
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11 -march=core-avx-i -O2")
 
 # Unfortuantely this is necessary for my ide (qt-creator) to resolve dependencies...
 file(GLOB DUMMY_HEADER_LIST RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} include/*.h src/*.h)
