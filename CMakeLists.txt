@@ -3,7 +3,7 @@ project(dlib_train_chain)
 
 FIND_PACKAGE(dlib REQUIRED)
 
-SET(OpenCV_MIN_VERSION "2.4.10")
+SET(OpenCV_MIN_VERSION "2.4.8")
 FIND_PATH(OpenCV_DIR NAMES opencv-config.cmake OpenCVConfig.cmake PATH_SUFFIXES lib/cmake lib)
 FIND_PACKAGE( OpenCV ${OpenCV_MIN_VERSION} REQUIRED COMPONENTS core contrib features2d imgproc legacy objdetect video highgui)
 IF(OpenCV_FOUND)
