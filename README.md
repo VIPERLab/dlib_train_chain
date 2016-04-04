@@ -20,9 +20,9 @@ Please compile **using AVX instruction set** (cmake .. -DUSE_AVX_INSTRUCTIONS=ON
     
 # Usage
 
-    python dtc-collect-data.py --test on --rectangle 250
+    dtc-collect-data --test on --rectangle 250
 
-    python dtc-collect-data.py --path /tmp --rectangle 250 --imagecount 10 --name thing_1
+    dtc-collect-data --path /tmp --rectangle 250 --imagecount 10 --name thing_1
     
     dtc-trainer /tmp/thing_1/ thing_1
     
