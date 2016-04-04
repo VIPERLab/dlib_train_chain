@@ -55,4 +55,6 @@ target_link_libraries(dtc-single-detection
 set_property(TARGET dtc-trainer PROPERTY INSTALL_RPATH_USE_LINK_PATH TRUE)
 set_target_properties(dtc-trainer PROPERTIES COMPILE_FLAGS -DCMAKE_INSTALL_PREFIX="${CMAKE_INSTALL_PREFIX}")
 
-install(TARGETS dtc-trainer RUNTIME DESTINATION bin)
+INSTALL(TARGETS dtc-trainer RUNTIME DESTINATION bin)
+INSTALL(TARGETS dtc-single-detection RUNTIME DESTINATION bin)
+INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/training/dtc-collect-data.py" DESTINATION ${CMAKE_INSTALL_PREFIX}/bin/)
