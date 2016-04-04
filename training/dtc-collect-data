@@ -76,7 +76,7 @@ data_dir_negative = options.path+'/'+options.name+'/negative/'
 file_name = options.name
 
 print ">> Positive Sample Images are Saved to --> %s " % data_dir_positive
-print ">> Negative Sample Images are Saved to --> %s " % data_dir_positive
+# print ">> Negative Sample Images are Saved to --> %s " % data_dir_positive
 print ">> Number of Samples --> %d" % int(options.imagecount)
 
 if not os.path.exists(data_dir):
