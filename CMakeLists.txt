@@ -23,7 +23,7 @@ ENDIF()
 
 SET(CMAKE_BUILD_TYPE Release)
 
-include_directories(${dlib_INCLUDE_DIRS})
+include_directories(${dlib_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS})
 
 # SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11 -march=core-avx2 -O2")
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11 -march=core-avx-i -O2")
@@ -48,6 +48,7 @@ target_link_libraries(dtc-trainer
 
 target_link_libraries(dtc-single-detection
         ${dlib_LIBRARIES}
+        ${OpenCV_LIBRARIES}
 )
 
 set_property(TARGET dtc-trainer PROPERTY INSTALL_RPATH_USE_LINK_PATH TRUE)
@@ -58,4 +59,4 @@ set_target_properties(dtc-single-detection PROPERTIES COMPILE_FLAGS -DCMAKE_INST
 
 INSTALL(TARGETS dtc-trainer RUNTIME DESTINATION bin)
 INSTALL(TARGETS dtc-single-detection RUNTIME DESTINATION bin)
-INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/training/dtc-collect-data" DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/training/dtc-collect-data" DESTINATION ${CMAKE_INSTALL_PREFIX}/bin/)
