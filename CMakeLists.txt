@@ -25,7 +25,6 @@ SET(CMAKE_BUILD_TYPE Release)
 
 include_directories(${dlib_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS})
 
-# SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11 -march=core-avx2 -O2")
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11 -march=core-avx-i -O2")
 
 # Unfortuantely this is necessary for my ide (qt-creator) to resolve dependencies...
@@ -40,7 +39,6 @@ add_executable(dtc-single-detection
         detection/src/dtc-single-detection.cpp
         ${DUMMY_HEADER_LIST}
 )
-
 
 target_link_libraries(dtc-trainer
         ${dlib_LIBRARIES}
