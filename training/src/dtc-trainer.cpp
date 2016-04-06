@@ -28,7 +28,8 @@ need to consult your compiler's manual to determine how to enable these
 instructions.  Note that AVX is the fastest but requires a CPU from at least
 2011.  SSE4 is the next fastest and is supported by most current machines.
 
-Extended by Florian Lier [flier AT techfak.uni-bielefeld DOT de]
+Edited Extended by:
+    Florian Lier [flier AT techfak.uni-bielefeld DOT de]
 
 */
 

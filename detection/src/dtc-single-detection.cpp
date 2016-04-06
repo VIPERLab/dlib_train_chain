@@ -28,10 +28,10 @@ need to consult your compiler's manual to determine how to enable these
 instructions.  Note that AVX is the fastest but requires a CPU from at least
 2011.  SSE4 is the next fastest and is supported by most current machines.
 
-Extended by Florian Lier [flier AT techfak.uni-bielefeld DOT de]
+Edited Extended by:
+    Florian Lier [flier AT techfak.uni-bielefeld DOT de]
 
 */
-
 
 #include <dlib/opencv.h>
 #include <opencv2/highgui/highgui.hpp>
@@ -47,42 +47,26 @@ int main(int argc, char** argv)
 {
     try
     {
-
         if (argc != 2)
         {
-            cout << ">> Provide the path to the trained svm" << endl;
+            cout << ">> Provide the path to the trained *.svm" << endl;
             cout << ">> Example:   ./dtc-single-detection path/to/svm" << endl;
             cout << endl;
             return 0;
         }
-
         const std::string svm_directory = argv[1];
-
         cv::VideoCapture cap(0);
         image_window win;
-
         typedef scan_fhog_pyramid<pyramid_down<6> > image_scanner_type;
         object_detector<image_scanner_type> detector;
         deserialize(svm_directory) >> detector;
         cout << ">> Using <-- " << svm_directory << endl;
-
-        // Grab and process frames until the main window is closed by the user.
         while(!win.is_closed())
         {
-            // Grab a frame
             cv::Mat temp;
             cap >> temp;
-            // Turn OpenCV's Mat into something dlib can deal with.  Note that this just
-            // wraps the Mat object, it doesn't copy anything.  So cimg is only valid as
-            // long as temp is valid.  Also don't do anything to temp that would cause it
-            // to reallocate the memory which stores the image as that will make cimg
-            // contain dangling pointers.  This basically means you shouldn't modify temp
-            // while using cimg.
             cv_image<bgr_pixel> cimg(temp);
-
-            // Detect faces
             std::vector<rectangle> things = detector(cimg);
-            // cout << things.size() << endl;
             win.set_title(":: DTC Single Detection (Quit: close this window) :: ");
             win.clear_overlay();
             win.set_image(cimg);

@@ -155,7 +155,6 @@ xml_tree = ET.ElementTree(xml_structure)
 print ">> Saving dtc-training.xml to --> %s" % data_dir
 xml_tree.write(data_dir+"/dtc-training.xml")
 
-
 """
 # Reset image counter
 idx = 0
