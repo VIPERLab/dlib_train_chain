@@ -48,10 +48,10 @@ int main(int argc, char** argv)
     cv::VideoCapture *cap;
     try
     {
-        if (argc !=3)
+        if (argc < 2)
         {
-            cout << ">> Provide the path to the trained *.svm" << endl;
-            cout << ">> Example:   ./dtc-single-detection path/to/svm ./path/to/video/file.webm" << endl;
+            cout << ">> Provide the path to the trained *.svm and an optional video file" << endl;
+            cout << ">> Example:   ./dtc-single-detection path/to/svm [./path/to/video/file.webm]" << endl;
             cout << endl;
             return 0;
         }
@@ -62,7 +62,6 @@ int main(int argc, char** argv)
         if (argc > 2) {
             cv::VideoCapture tmp_cap(videoFile);
             *cap = tmp_cap;
-
         } else {
             cv::VideoCapture tmp_cap(0);
             *cap = tmp_cap;
