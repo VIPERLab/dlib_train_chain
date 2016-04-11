@@ -47,7 +47,7 @@ int main(int argc, char** argv)
 {
     try
     {
-        if (argc != 2)
+        if (argc < 2 || argc > 3)
         {
             cout << ">> Provide the path to the trained *.svm" << endl;
             cout << ">> Example:   ./dtc-single-detection path/to/svm" << endl;
@@ -56,6 +56,8 @@ int main(int argc, char** argv)
         }
         const std::string svm_directory = argv[1];
         cv::VideoCapture cap(0);
+        if (argc == 3)
+            cv::VideoCapture cap(argv[2]);
         image_window win;
         typedef scan_fhog_pyramid<pyramid_down<6> > image_scanner_type;
         object_detector<image_scanner_type> detector;
