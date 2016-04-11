@@ -56,8 +56,9 @@ int main(int argc, char** argv)
         }
         const std::string svm_directory = argv[1];
         cv::VideoCapture cap(0);
-        if (argc == 3)
+        if (argc == 3) {
             cv::VideoCapture cap(argv[2]);
+        }
         image_window win;
         typedef scan_fhog_pyramid<pyramid_down<6> > image_scanner_type;
         object_detector<image_scanner_type> detector;
