@@ -45,6 +45,7 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
+    cv::VideoCapture *cap;
     try
     {
         if (argc !=3)
@@ -54,10 +55,19 @@ int main(int argc, char** argv)
             cout << endl;
             return 0;
         }
+
         const std::string svm_directory = argv[1];
         const std::string videoFile = argv[2];
-//        cv::VideoCapture cap(0);
-        cv::VideoCapture cap(videoFile);
+
+        if (argc > 2) {
+            cv::VideoCapture tmp_cap(videoFile);
+            *cap = tmp_cap;
+
+        } else {
+            cv::VideoCapture tmp_cap(0);
+            *cap = tmp_cap;
+        }
+
         image_window win;
         typedef scan_fhog_pyramid<pyramid_down<6> > image_scanner_type;
         object_detector<image_scanner_type> detector;
@@ -66,7 +76,8 @@ int main(int argc, char** argv)
         while(!win.is_closed())
         {
             cv::Mat temp;
-            cap >> temp;
+            cap->grab();
+            cap->retrieve(temp);
             cv_image<bgr_pixel> cimg(temp);
             std::vector<rectangle> things = detector(cimg);
             win.set_title(":: DTC Single Detection (Quit: close this window) :: ");
