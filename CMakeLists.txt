@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(dlib_train_chain)
 
-FIND_PACKAGE(dlib REQUIRED)
+FIND_PACKAGE(dlib REQUIRED PATHS /media/local_data/mwiechmann/citk/systems/dlib-hog-training-nightly/lib/cmake/dlib)
 
 SET(OpenCV_MIN_VERSION "2.4.8")
 FIND_PATH(OpenCV_DIR NAMES opencv-config.cmake OpenCVConfig.cmake PATH_SUFFIXES lib/cmake lib)

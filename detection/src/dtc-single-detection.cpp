@@ -57,14 +57,14 @@ int main(int argc, char** argv)
         }
 
         const std::string svm_directory = argv[1];
-        const std::string videoFile = argv[2];
 
         if (argc > 2) {
+            const std::string videoFile = argv[2];
             cv::VideoCapture tmp_cap(videoFile);
-            *cap = tmp_cap;
+            cap = &tmp_cap;
         } else {
             cv::VideoCapture tmp_cap(0);
-            *cap = tmp_cap;
+            cap = &tmp_cap;
         }
 
         image_window win;
